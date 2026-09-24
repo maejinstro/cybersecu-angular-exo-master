@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: #1e293b;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.spacer {
+  flex: 1;
+}

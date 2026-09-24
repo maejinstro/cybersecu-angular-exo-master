@@ -1,0 +1,18 @@
+@if (user(); as user) {
+  <h1>{{ user.username }}</h1>
+  <p>Email : {{ user.email }}</p>
+  <p>Rôle : {{ user.role }}</p>
+  <p>Inscrit le {{ user.createdAt | date: 'short' }}</p>
+  <a [routerLink]="['/user-update', user.id]">Modifier le profil</a>
+
+  <h2>Ses items</h2>
+  <ul>
+    @for (item of user.items; track item.id) {
+      <li><a [routerLink]="['/item-details', item.id]">{{ item.title }}</a></li>
+    } @empty {
+      <li>Aucun item.</li>
+    }
+  </ul>
+} @else {
+  <p>Chargement...</p>
+}

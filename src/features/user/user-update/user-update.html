@@ -1,0 +1,11 @@
+<h1>Modifier le profil</h1>
+@if (form(); as form) {
+  <form (ngSubmit)="submit()">
+    <input name="username" placeholder="Nom d'utilisateur" [(ngModel)]="form.username" />
+    <input name="email" type="email" placeholder="Email" [(ngModel)]="form.email" />
+    <input name="password" type="password" placeholder="Mot de passe" [(ngModel)]="form.password" />
+    <button type="submit">Enregistrer</button>
+  </form>
+} @else {
+  <p>Chargement...</p>
+}

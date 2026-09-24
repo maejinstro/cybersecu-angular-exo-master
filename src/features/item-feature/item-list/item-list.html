@@ -1,0 +1,18 @@
+<h1>Items</h1>
+<a routerLink="/item-add">+ Ajouter un item</a>
+
+@for (item of items(); track item.id) {
+  <article class="card">
+    @if (item.imageUrl) {
+      <img [src]="item.imageUrl" [alt]="item.title" />
+    }
+    <div>
+      <h2><a [routerLink]="['/item-details', item.id]">{{ item.title }}</a></h2>
+      <p>Par {{ item.user?.username ?? 'inconnu' }} le {{ item.createdAt | date: 'short' }}</p>
+      <a [routerLink]="['/item-update', item.id]">Modifier</a>
+      <button (click)="remove(item.id)">Supprimer</button>
+    </div>
+  </article>
+} @empty {
+  <p>Aucun item.</p>
+}

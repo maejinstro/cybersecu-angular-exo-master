@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+main,
+app-home,
+app-login,
+app-register,
+app-item-list,
+app-item-add,
+app-item-details,
+app-item-update,
+app-user-details,
+app-user-update {
+  display: block;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  font: inherit;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.error {
+  color: #dc2626;
+}
+
+img {
+  max-width: 100%;
+}

@@ -1,0 +1,14 @@
+<nav>
+  <a routerLink="/">Accueil</a>
+  <a routerLink="/item-list">Items</a>
+  @if (auth.currentUser(); as user) {
+    <a routerLink="/item-add">Ajouter un item</a>
+    <span class="spacer"></span>
+    <a [routerLink]="['/user-details', user.id]">{{ user.username }}</a>
+    <button (click)="logout()">Déconnexion</button>
+  } @else {
+    <span class="spacer"></span>
+    <a routerLink="/login">Connexion</a>
+    <a routerLink="/register">Inscription</a>
+  }
+</nav>

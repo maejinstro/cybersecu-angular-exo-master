@@ -1,0 +1,7 @@
+<h1>Ajouter un item</h1>
+<form (ngSubmit)="submit()">
+  <input name="title" placeholder="Titre" [(ngModel)]="form.title" />
+  <textarea name="description" rows="5" placeholder="Description" [(ngModel)]="form.description"></textarea>
+  <input name="imageUrl" placeholder="URL de l'image" [(ngModel)]="form.imageUrl" />
+  <button type="submit">Ajouter</button>
+</form>
