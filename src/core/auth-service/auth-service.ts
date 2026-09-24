@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Service, inject, signal } from '@angular/core';
+import { Service, computed, inject, signal } from '@angular/core';
 import { tap } from 'rxjs';
 import { API_URL, User } from '../models';
 
@@ -8,6 +8,7 @@ export class AuthService {
   private http = inject(HttpClient);
 
   currentUser = signal<User | null>(JSON.parse(localStorage.getItem('user') ?? 'null'));
+  isAdmin = computed(() => this.currentUser()?.role ==="admin")
 
   register(data: { username: string; email: string; password: string }) {
     return this.http.post<User>(`${API_URL}/auth/register`, data);
