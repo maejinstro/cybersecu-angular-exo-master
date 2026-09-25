@@ -1,15 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Service, inject, signal } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Service, computed, inject, signal } from '@angular/core';
+import { tap } from 'rxjs';
 import { API_URL, User } from '../models';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service'
 
 @Service()
 export class AuthService {
   private http = inject(HttpClient);
-  private cookieservice = inject(CookieService);
+  private cookieservice = inject(CookieService)
 
-  currentUser = signal<User | null>(JSON.parse(localStorage.getItem('user') ?? 'null'));
+  currentUser = signal<User | null>(JSON.parse(this.cookieservice.get('user') ?? 'null'));
+
+  //Vérification Admin
+  isAdmin = computed(() => this.currentUser()?.role ==="admin")
+
+  //Récupération ID User
+  IdUser(){
+    return this.currentUser()?.id
+  }
 
   register(data: { username: string; email: string; password: string }) : Observable<User> {
     return this.http.post<User>(`${API_URL}/auth/register`, data).pipe(
