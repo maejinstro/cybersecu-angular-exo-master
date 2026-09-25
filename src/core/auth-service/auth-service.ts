@@ -2,14 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Service, computed, inject, signal } from '@angular/core';
 import { tap } from 'rxjs';
 import { API_URL, User } from '../models';
+import { CookieService } from 'ngx-cookie-service'
 
 @Service()
 export class AuthService {
   private http = inject(HttpClient);
+  private cookieservice = inject(CookieService)
 
-  currentUser = signal<User | null>(JSON.parse(cookieservice.get('user') ?? 'null'));
+  currentUser = signal<User | null>(JSON.parse(this.cookieservice.get('user') ?? 'null'));
+
+  //Vérification Admin
   isAdmin = computed(() => this.currentUser()?.role ==="admin")
 
+  //Récupération ID User
   IdUser(){
     return this.currentUser()?.id
   }

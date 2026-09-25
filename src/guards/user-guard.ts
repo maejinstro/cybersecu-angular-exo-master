@@ -10,6 +10,8 @@ export const userGuard: CanActivateFn = (route) => {
 
   const id = Number(route.paramMap.get('id'));
 
+  //Vérification de l'ID du User connecté
   if(auth.IdUser()===id)return true;
+
   return router.createUrlTree(['/']);  
 };
