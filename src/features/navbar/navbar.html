@@ -1,6 +1,11 @@
 <nav>
   <a routerLink="/">Accueil</a>
   <a routerLink="/item-list">Items</a>
+  @if(auth.isAdmin()){
+    <button (click)="AdminNavigateToContact()">List</button>
+  }@else if(auth.currentUser(); as user){
+    <button (click)="navigateToContact()">Contact</button>
+  }
   @if (auth.currentUser(); as user) {
     <a routerLink="/item-add">Ajouter un item</a>
     <span class="spacer"></span>

@@ -16,4 +16,12 @@ export class Navbar {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
+
+  navigateToContact(){
+    this.router.navigate(['/contact'])
+  }
+
+  AdminNavigateToContact() {
+    this.router.navigate(['/list'])
+  }
 }
