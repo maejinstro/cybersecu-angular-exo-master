@@ -7,7 +7,7 @@ import { API_URL, User } from '../models';
 export class AuthService {
   private http = inject(HttpClient);
 
-  currentUser = signal<User | null>(JSON.parse(localStorage.getItem('user') ?? 'null'));
+  currentUser = signal<User | null>(JSON.parse(cookieservice.get('user') ?? 'null'));
   isAdmin = computed(() => this.currentUser()?.role ==="admin")
 
   register(data: { username: string; email: string; password: string }) {
