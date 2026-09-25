@@ -10,6 +10,10 @@ export class AuthService {
   currentUser = signal<User | null>(JSON.parse(cookieservice.get('user') ?? 'null'));
   isAdmin = computed(() => this.currentUser()?.role ==="admin")
 
+  IdUser(){
+    return this.currentUser()?.id
+  }
+
   register(data: { username: string; email: string; password: string }) {
     return this.http.post<User>(`${API_URL}/auth/register`, data);
   }
