@@ -30,11 +30,11 @@ export class AuthService {
     this.cookieservice.set(key, value);
   }
 
-  login(data: { email: string; password: string }) : Observable<User>  {
-    return this.http.post<User>(`${API_URL}/auth/login`, data).pipe(
-      tap((user) => {
-        this.setData('user',JSON.stringify(user));
-        this.currentUser.set(user);
+  login(data: { email: string; password: string }) : Observable<{access_token : string,user : User}>  {
+    return this.http.post<{access_token : string,user : User}>(`${API_URL}/auth/login`, data).pipe(
+      tap((res) => {
+        this.setData('user',JSON.stringify(res.access_token));
+        this.currentUser.set(res.user);
       }),
     );
   }

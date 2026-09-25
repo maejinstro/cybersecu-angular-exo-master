@@ -13,6 +13,6 @@ export const routes: Routes = [
     { path : 'item-details/:id' , loadComponent: () => import('../features/item-feature/item-details/item-details').then(c => c.ItemDetails)},
     { path : 'item-update/:id' , canActivate: [adminGuard], loadComponent: () => import('../features/item-feature/item-update/item-update').then(c => c.ItemUpdate)},
     { path : '**' , loadComponent: () => import('../features/home/home').then(c => c.Home)},
-    { path : 'contact' , canActivate : [userGuard], loadComponent : () => import('../features/contact-feature/contact-add/contact-add').then(c=>c.ContactAdd)}
+    { path : 'contact' , canActivate : [userGuard], loadComponent : () => import('../features/contact-feature/contact-add/contact-add').then(c=>c.ContactAdd)},
     { path : 'list', canActivate : [adminGuard], loadComponent : () => import('../features/contact-feature/contact-list/contact-list').then(c => c.ContactList)}
 ];
