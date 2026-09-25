@@ -1,0 +1,29 @@
+<section class="contact-form">
+
+  <form (ngSubmit)="submit()" #contactForm="ngForm">
+
+    <input
+      type="text"
+      name="title"
+      placeholder="Titre"
+      [(ngModel)]="form.title"
+      required
+    />
+
+    <textarea
+      name="message"
+      placeholder="Message"
+      rows="5"
+      [(ngModel)]="form.message"
+      required>
+    </textarea>
+
+    <button
+      type="submit"
+      [disabled]="contactForm.invalid">
+      +
+    </button>
+
+  </form>
+
+</section>

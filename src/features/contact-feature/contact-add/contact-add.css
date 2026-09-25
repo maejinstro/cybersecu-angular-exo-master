@@ -1,0 +1,44 @@
+.contact-form {
+  min-height: 430px;
+  padding: 2.5rem;
+  border: 2px solid #333;
+  border-radius: 28px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 420px;
+  margin: 2rem auto;
+}
+
+input,
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #333;
+  border-radius: 14px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  align-self: center;
+  width: 55px;
+  height: 55px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

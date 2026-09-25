@@ -1,0 +1,56 @@
+<div class="contact-page">
+
+  <div class="contact-list">
+
+    <div class="contact-header">
+      <h1>Contacts</h1>
+      <button (click)="toggleAddForm()">+ Nouveau contact</button>
+    </div>
+
+    @for (contact of contacts(); track contact.id) {
+
+      <div class="contact-card">
+
+        <div class="contact-content">
+          <h2>{{ contact.title }}</h2>
+          <p>{{ contact.message }}</p>
+
+          @if (isAdmin()) {
+            <textarea
+              [(ngModel)]="contact.internalMessage"
+              placeholder="Message interne"
+              [disabled]="contact.status === 'done'">
+            </textarea>
+          } @else {
+            <p class="internal-message">
+              {{ contact.internalMessage || 'En attente de réponse.' }}
+            </p>
+          }
+
+          <small>{{ contact.createdAt | date: 'short' }}</small>
+        </div>
+
+        @if (isAdmin()) {
+          <button
+            class="ok-button"
+            (click)="validate(contact)"
+            [disabled]="contact.status === 'done' || !contact.internalMessage">
+            OK
+          </button>
+        } @else {
+          <span>{{ contact.status }}</span>
+        }
+
+      </div>
+
+    } @empty {
+      <p>Aucun message.</p>
+    }
+
+  </div>
+
+  @if (showAddForm()) {
+    <app-contact-add (created)="contactCreated()"></app-contact-add>
+  }
+
+</div>
