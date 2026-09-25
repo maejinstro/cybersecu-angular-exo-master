@@ -9,7 +9,7 @@ export class AuthService {
   private http = inject(HttpClient);
   private cookieservice = inject(CookieService)
 
-  currentUser = signal<User | null>(JSON.parse(this.cookieservice.get('user') ?? 'null'));
+  currentUser = signal<User | null>(this.cookieservice.get('user')? JSON.parse(this.cookieservice.get('user')): null);
 
   //Vérification Admin
   isAdmin = computed(() => this.currentUser()?.role ==="admin")
